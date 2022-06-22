@@ -8,7 +8,7 @@
      -->
     <micro-app
       name="vue3-vite"
-      url="http://localhost:3001/vue3-vite/"
+      url="http://localhost:3001/vue3-vite/#/HelloWorld"
       inline
       disableSandbox
       baseroute="/vue3-vite"
@@ -18,36 +18,14 @@
 </template>
 
 <script setup>
-// import microApp from '@micro-zoe/micro-app'
+import { EventCenterForMicroApp } from '@micro-zoe/micro-app'
 
-// import microApp from '@micro-zoe/micro-app'
-
-// microApp.start()
-/* microApp.start({
-  plugins: {
-    modules: {
-      // appName即应用的name值
-      appName: [
-        {
-          loader(code) {
-            if (process.env.NODE_ENV === 'development') {
-              // 这里 basename 需要和子应用vite.config.js中base的配置保持一致
-              // eslint-disable-next-line no-param-reassign
-              code = code.replace(/(from|import)(\s*['"])(\/vue3-vite\/)/g, all => {
-                return all.replace('/vue3-vite/', 'http://localhost:3001/vue3-vite/')
-              })
-            }
-
-            return code
-          }
-        }
-      ]
-    }
-  }
-}) */
+// 注意：每个vite子应用根据appName单独分配一个通信对象
+window.eventCenterForViteApp1 = new EventCenterForMicroApp('vue3-vite')
+window.eventCenterForViteApp1.setGlobalData({ token: 'aaa' })
 
 const handleMount = () => {
-  console.log('child-vite 已经渲染完成')
+  console.log('vue3-vite 已经渲染完成')
 }
 </script>
 

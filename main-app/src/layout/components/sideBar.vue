@@ -11,17 +11,20 @@
 </template>-->
 <template>
   <div class="side-bar">
-    <!--    <n-menu
+    <n-menu
       :default-expand-all="true"
       :options="menuOptions"
       @update:value="handleUpdateValue"
-    />-->
+      :value="menuActiveKey"
+    />
   </div>
 </template>
 
 <script setup>
-import { h } from 'vue'
-import { RouterLink } from 'vue-router'
+import { h, ref } from 'vue'
+import { RouterLink, useRoute } from 'vue-router'
+
+const menuActiveKey = ref()
 
 const menuList = [
   {
@@ -41,6 +44,10 @@ const menuList = [
   }
 ]
 
+const route = useRoute()
+
+menuActiveKey.value = route.path
+
 // menu
 const menuOptions = menuList.map(menu => {
   return {
@@ -49,8 +56,8 @@ const menuOptions = menuList.map(menu => {
     // icon: () => h('i', { class: 'iconfont' }, menu.icon),
     children: menu.children.map(menuChild => {
       return {
-        label: () => h(RouterLink, { to: { path: menuChild.path } }, menuChild.label),
-        key: menuChild.id
+        label: () => h(RouterLink, { to: { path: menuChild.path } }, () => menuChild.label),
+        key: menuChild.path
         // icon: () => h('i', { class: 'iconfont' }, menuChild.icon)
       }
     })
@@ -61,6 +68,7 @@ console.log(32, menuOptions)
 
 const handleUpdateValue = (key, item) => {
   console.log(key, item)
+  menuActiveKey.value = key
 }
 </script>
 

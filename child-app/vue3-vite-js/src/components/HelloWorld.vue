@@ -6,11 +6,19 @@ defineProps({
 })
 
 const count = ref(0)
+
+// 主动获取数据
+if(window.eventCenterForViteApp1){
+  console.log('window', window)
+  const data = window.eventCenterForViteApp1.getData()
+  console.log(12, data)
+}
+
 </script>
 
 <template>
   <h1>{{ msg }}</h1>
-
+  <h2>tog</h2>
   <p>
     Recommended IDE setup:
     <a href="https://code.visualstudio.com/" target="_blank">VS Code</a>

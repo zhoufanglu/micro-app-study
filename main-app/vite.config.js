@@ -45,6 +45,19 @@ export default ({ mode }) => {
       outDir: env.VITE_OUTPUT_DIR,
       // 放置生成的静态文件目录（js css img）
       assetsDir: 'static'
+    },
+    chainWebpack: config => {
+      config.module
+        .rule('vue')
+        .use('vue-loader')
+        .tap(options => {
+          // eslint-disable-next-line no-param-reassign
+          options.compilerOptions = {
+            ...(options.compilerOptions || {}),
+            isCustomElement: tag => tag.startsWith('micro-app')
+          }
+          return options
+        })
     }
   })
 }
