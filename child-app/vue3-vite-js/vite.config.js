@@ -5,16 +5,7 @@ import { writeFileSync } from "fs";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  /*base: `${
-    process.env.NODE_ENV === "production" ? "http://my-site.com" : ""
-  }/vue3-vite/`,*/
   base: `${process.env.NODE_ENV === 'production' ? 'http://www.micro-zoe.com' : ''}/vue3-vite/`,
-  // vue.config.js
-/*  devServer: {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-    },
-  },*/
   plugins: [
     vue(),
     // 自定义插件
@@ -46,4 +37,8 @@ export default defineConfig({
       };
     })(),
   ],
+  server: {
+    host: '0.0.0.0',
+    port: 4001
+  }
 });

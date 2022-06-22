@@ -14,8 +14,8 @@
     <n-menu
       :default-expand-all="true"
       :options="menuOptions"
-      @update:value="handleUpdateValue"
       :value="menuActiveKey"
+      @update:value="handleUpdateValue"
     />
   </div>
 </template>
@@ -53,12 +53,12 @@ const menuOptions = menuList.map(menu => {
   return {
     label: menu.label,
     key: menu.id,
-    // icon: () => h('i', { class: 'iconfont' }, menu.icon),
+    icon: () => h('i', { class: 'iconfont', innerHTML: menu.icon }),
     children: menu.children.map(menuChild => {
       return {
         label: () => h(RouterLink, { to: { path: menuChild.path } }, () => menuChild.label),
-        key: menuChild.path
-        // icon: () => h('i', { class: 'iconfont' }, menuChild.icon)
+        key: menuChild.path,
+        icon: () => h('i', { class: 'iconfont', innerHTML: menuChild.icon })
       }
     })
   }

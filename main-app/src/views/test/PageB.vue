@@ -1,5 +1,8 @@
 <template>
-  <div class="p-page-B">Page-B</div>
+  <div class="p-page-B">
+    Page-B
+    <i class="iconfont">&#xe60c;</i>
+  </div>
 </template>
 
 <script setup></script>

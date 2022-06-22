@@ -19,6 +19,7 @@ if(window.eventCenterForViteApp1){
 <template>
   <h1>{{ msg }}</h1>
   <h2>tog</h2>
+  <button @click="$router.push('/childRoute')">go 去子路由</button>
   <p>
     Recommended IDE setup:
     <a href="https://code.visualstudio.com/" target="_blank">VS Code</a>

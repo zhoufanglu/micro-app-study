@@ -8,7 +8,7 @@
      -->
     <micro-app
       name="vue3-vite"
-      url="http://localhost:3001/vue3-vite/#/HelloWorld"
+      url="http://localhost:4001/vue3-vite/"
       inline
       disableSandbox
       baseroute="/vue3-vite"
