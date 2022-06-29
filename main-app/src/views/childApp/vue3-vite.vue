@@ -12,20 +12,37 @@
       inline
       disableSandbox
       baseroute="/vue3-vite"
+      :data="mainViteValue"
+      @created="handleCreated"
       @mounted="handleMount"
+      @unmount="unmount"
+      @datachange="handleDataChange"
     ></micro-app>
   </div>
 </template>
 
 <script setup>
 import { EventCenterForMicroApp } from '@micro-zoe/micro-app'
+import { ref } from 'vue'
 
-// 注意：每个vite子应用根据appName单独分配一个通信对象
-window.eventCenterForViteApp1 = new EventCenterForMicroApp('vue3-vite')
-window.eventCenterForViteApp1.setGlobalData({ token: 'aaa' })
+const mainViteValue = ref({})
 
-const handleMount = () => {
-  console.log('vue3-vite 已经渲染完成')
+const handleCreated = () => {
+  // 注意：每个vite子应用根据appName单独分配一个通信对象
+  window.eventCenterFor_vue3Vite = new EventCenterForMicroApp('vue3-vite')
+  // console.log('vue3-vite 已经渲染完成')
+  mainViteValue.value = { token: 123455678 }
+}
+
+const handleMount = () => {}
+
+const unmount = () => {
+  console.log(39, window['vue3-vite'])
+  window['vue3-vite'].unmount()
+  // window.dispatchEvent(new Event('unmount-bakingVue'))
+}
+const handleDataChange = e => {
+  console.log('来自子组件vue3-vite的数据', e.detail.data)
 }
 </script>
 

@@ -7,13 +7,6 @@ defineProps({
 
 const count = ref(0)
 
-// 主动获取数据
-if(window.eventCenterForViteApp1){
-  console.log('window', window)
-  const data = window.eventCenterForViteApp1.getData()
-  console.log(12, data)
-}
-
 </script>
 
 <template>

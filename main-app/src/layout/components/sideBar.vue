@@ -22,7 +22,7 @@
 
 <script setup>
 import { h, ref } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
+import { RouterLink, useRoute, useRouter } from 'vue-router'
 
 const menuActiveKey = ref()
 
@@ -37,14 +37,17 @@ const menuList = [
     ]
   },
   {
-    label: '子app',
+    label: '子-vue3-vite-app',
     id: 2,
     icon: '&#xe60c;',
-    children: [{ label: 'vue3-vite', id: 21, icon: '&#xe60c;', path: '/vue3-vite' }]
+    children: [
+      { label: 'vue3-vite', id: 21, icon: '&#xe60c;', path: '/vue3-vite' },
+      { label: 'vue3-vite-childRoute', id: 22, icon: '&#xe60c;', path: '/vue3-vite/childRoute' }
+    ]
   }
 ]
 
-const route = useRoute()
+const [route, router] = [useRoute(), useRouter()]
 
 menuActiveKey.value = route.path
 
@@ -56,7 +59,8 @@ const menuOptions = menuList.map(menu => {
     icon: () => h('i', { class: 'iconfont', innerHTML: menu.icon }),
     children: menu.children.map(menuChild => {
       return {
-        label: () => h(RouterLink, { to: { path: menuChild.path } }, () => menuChild.label),
+        // label: () => h(RouterLink, { to: { path: menuChild.path } }, () => menuChild.label),
+        label: () => h('span', {}, menuChild.label),
         key: menuChild.path,
         icon: () => h('i', { class: 'iconfont', innerHTML: menuChild.icon })
       }
@@ -67,8 +71,10 @@ const menuOptions = menuList.map(menu => {
 console.log(32, menuOptions)
 
 const handleUpdateValue = (key, item) => {
-  console.log(key, item)
+  console.log(83, key)
+  // console.log(84, item)
   menuActiveKey.value = key
+  router.push(key)
 }
 </script>
 
@@ -77,7 +83,7 @@ const handleUpdateValue = (key, item) => {
   lang="scss"
 >
 .side-bar {
-  width: 200px;
+  width: 300px;
   height: 100%;
   //box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, .1);
   box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 0.1);
