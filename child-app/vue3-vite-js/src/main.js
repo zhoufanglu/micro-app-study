@@ -57,7 +57,7 @@ function mount() {
   console.log('微应用vue3-vite渲染了')
   // 响应数据
   handleMicroData()
-  fixBugForVueRouter4(router)
+  // fixBugForVueRouter4(router)
 }
 
 // 将卸载操作放入 unmount 函数
