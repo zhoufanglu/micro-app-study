@@ -15,6 +15,7 @@ export default ({ mode }) => {
       vue({
         template: {
           compilerOptions: {
+            // 以micro-app开头的元素都会被识别为自定义元素
             isCustomElement: tag => /^micro-app/.test(tag)
           }
         }

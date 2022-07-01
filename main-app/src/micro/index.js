@@ -18,6 +18,22 @@ microApp.start({
             return code
           }
         }
+      ],
+      // vue2 + webpack的子应用
+      'vue2-webpack': [
+        {
+          loader(code) {
+            if (process.env.NODE_ENV === 'development') {
+              // 这里 /basename/ 需要和子应用vite.config.js中base的配置保持一致
+              // eslint-disable-next-line no-param-reassign
+              code = code.replace(/(from|import)(\s*['"])(\/vue2-webpack\/)/g, all => {
+                // 子应用启动地址
+                return all.replace('/vue2-webpack/', 'http://localhost:4002/vue2-webpack/')
+              })
+            }
+            return code
+          }
+        }
       ]
     }
   }

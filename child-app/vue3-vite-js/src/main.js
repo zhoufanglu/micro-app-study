@@ -11,13 +11,17 @@ import routes from './router/index.js'
 
 // 与基座进行数据交互
 function handleMicroData () {
-  console.log(12, window)
+  console.log(14, window)
   // 接收数据 eventCenterForAppNameVite 是基座添加到window的数据通信对象
   if (window.eventCenterFor_vue3Vite) {
     // 主动获取基座下发的数据
     const {token} = window.eventCenterFor_vue3Vite.getData()
     console.log('vue3-vite getData:', token)
-
+    // 菜单事件
+    window.eventCenterFor_vue3Vite.addDataListener(data=>{
+      console.log(22, data)
+      // router.push(data)
+    })
     // 监听基座下发的数据变化
     /*window.eventCenterForAppNameVite.addDataListener((data: Record<string, unknown>) => {
       console.log('child-vite addDataListener:', data)
@@ -75,7 +79,6 @@ function unmount () {
 // 微前端环境下，注册mount和unmount方法
 if (window.__MICRO_APP_BASE_APPLICATION__) {
   window['vue3-vite'] = { mount, unmount }
-  console.log(78, window)
   mount()
 } else {
   // 非微前端环境直接渲染

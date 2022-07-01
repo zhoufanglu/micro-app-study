@@ -23,6 +23,7 @@
 <script setup>
 import { h, ref } from 'vue'
 import { RouterLink, useRoute, useRouter } from 'vue-router'
+import microApp from '@micro-zoe/micro-app'
 
 const menuActiveKey = ref()
 
@@ -41,8 +42,29 @@ const menuList = [
     id: 2,
     icon: '&#xe60c;',
     children: [
-      { label: 'vue3-vite', id: 21, icon: '&#xe60c;', path: '/vue3-vite' },
-      { label: 'vue3-vite-childRoute', id: 22, icon: '&#xe60c;', path: '/vue3-vite/childRoute' }
+      { label: 'vue3-vite', id: 21, icon: '&#xe60c;', path: '/vue3-vite/', appName: 'vue3-vite' },
+      {
+        label: 'vue3-vite-childRoute',
+        id: 22,
+        icon: '&#xe60c;',
+        path: '/vue3-vite/childRoute',
+        appName: 'vue3-vite'
+      }
+    ]
+  },
+  {
+    label: '子-vue2-webpack-app',
+    id: 3,
+    icon: '&#xe60c;',
+    children: [
+      {
+        label: 'vue2-webpack-index',
+        id: 31,
+        icon: '&#xe60c;',
+        path: '/vue2-webpack/',
+        appName: 'vue2-webpack'
+      }
+      // { label: 'vue3-vite-childRoute', id: 22, icon: '&#xe60c;', path: '/vue3-vite/childRoute' }
     ]
   }
 ]
@@ -62,7 +84,8 @@ const menuOptions = menuList.map(menu => {
         // label: () => h(RouterLink, { to: { path: menuChild.path } }, () => menuChild.label),
         label: () => h('span', {}, menuChild.label),
         key: menuChild.path,
-        icon: () => h('i', { class: 'iconfont', innerHTML: menuChild.icon })
+        icon: () => h('i', { class: 'iconfont', innerHTML: menuChild.icon }),
+        appName: menuChild.appName
       }
     })
   }
@@ -70,11 +93,19 @@ const menuOptions = menuList.map(menu => {
 
 console.log(32, menuOptions)
 
-const handleUpdateValue = (key, item) => {
-  console.log(83, key)
+const handleUpdateValue = (path, item) => {
+  // console.log(83, path)
   // console.log(84, item)
-  menuActiveKey.value = key
-  router.push(key)
+  menuActiveKey.value = path
+  // 由于子应用是hash， 我们需要去掉路由前缀进行跳转
+  // 向子应用传递事件进行跳转
+  const hashPath = path.replace(`/${item.appName}`, '')
+  console.log(103, hashPath)
+  // console.log(102, item.appName)
+  router.push(path)
+  microApp.setData(item.appName, {
+    path
+  })
 }
 </script>
 
