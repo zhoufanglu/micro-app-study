@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="350" height="200" viewBox="0 0 350 200">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #5a6dff;
+        stroke-width: 5px;
+        fill-rule: evenodd;
+        opacity: 0.65;
+        filter: url(#filter);
+      }
+    </style>
+    <filter id="filter" x="27" y="4.813" width="296.312" height="192.156" filterUnits="userSpaceOnUse">
+      <feImage preserveAspectRatio="none" x="27" y="4.8125" width="296" height="190.188" result="image" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjk2IiBoZWlnaHQ9IjE5MC4xODgiIHZpZXdCb3g9IjAgMCAyOTYgMTkwLjE4OCI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogdXJsKCNsaW5lYXItZ3JhZGllbnQpOwogICAgICB9CiAgICA8L3N0eWxlPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsaW5lYXItZ3JhZGllbnQiIHgxPSIyOTYiIHkxPSIzOC4yODIiIHgyPSIwIiB5Mj0iMTUxLjkwNiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAuMjE1IiBzdG9wLWNvbG9yPSIjMWFiMTg4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMC43ODUiIHN0b3AtY29sb3I9IiMwOTY0OTkiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxyZWN0IGNsYXNzPSJjbHMtMSIgd2lkdGg9IjI5NiIgaGVpZ2h0PSIxOTAuMTg4Ii8+Cjwvc3ZnPgo="/>
+      <feComposite result="composite" operator="in" in2="SourceGraphic"/>
+      <feBlend result="blend" in2="SourceGraphic"/>
+      <feGaussianBlur result="blur" stdDeviation="1.667" in="SourceAlpha"/>
+      <feFlood result="flood" flood-color="#77eaff" flood-opacity="0.52"/>
+      <feComposite result="composite-3" operator="out" in2="blur"/>
+      <feComposite result="composite-2" operator="in" in2="SourceAlpha"/>
+      <feBlend result="blend-2" mode="screen" in2="blend"/>
+    </filter>
+  </defs>
+  <g style="fill: none; filter: url(#filter)">
+    <path id="形状_2082" data-name="形状 2082" class="cls-1" d="M27,195S102.229,18.477,323,4.812" style="stroke: inherit; filter: none; fill: inherit"/>
+  </g>
+  <use xlink:href="#形状_2082" style="stroke: #5a6dff; filter: none; fill: none"/>
+</svg>

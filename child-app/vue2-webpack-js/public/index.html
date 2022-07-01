@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+      <style>
+          .full-loading{
+              width: 100vh;
+              height: 100vh;
+              background-color: black;
+              color: white;
+              position: fixed;
+              top: 0;
+              z-index: 9999;
+          }
+      </style>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div class="full-loading">loading...</div>
+    <div id="vue2-webpack-app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+  <script>
+    console.log(27, document.querySelector('.full-loading'))
+    document.querySelector('.full-loading').style.display = 'none'
+  </script>
+</html>
