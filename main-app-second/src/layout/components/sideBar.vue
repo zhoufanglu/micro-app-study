@@ -50,12 +50,12 @@ menuList.value = [
       {
         name: 'page-A',
         path: '/page-A',
-        appForm: 'main'
+        appFrom: 'main'
       },
       {
         name: 'page-B',
         path: '/page-B',
-        appForm: 'main'
+        appFrom: 'main'
       }
     ]
   },
@@ -65,12 +65,22 @@ menuList.value = [
       {
         name: 'home',
         path: '/',
-        appForm: 'child-app-1'
+        appFrom: 'child-app-1'
       },
       {
         name: 'childRoute',
         path: '/childRoute',
-        appForm: 'child-app-1'
+        appFrom: 'child-app-1'
+      }
+    ]
+  },
+  {
+    name: '子-bdcp',
+    children: [
+      {
+        name: 'home',
+        path: '/',
+        appFrom: 'bdcp'
       }
     ]
   }
@@ -94,18 +104,20 @@ getActiveIndex()
 /** ********************事件********************** */
 const menuItemClick = item => {
   // 如果是主应用地址 就正常跳转
-  if (item.appForm === 'main') {
+  if (item.appFrom === 'main') {
     router.push(item.path)
     if (window.eventCenterForChildApp_1) {
       window.eventCenterForChildApp_1.clearDataListener()
     }
   }
   //  如果是子应用 child-app-1
-  else if (item.appForm === 'child-app-1') {
+  else if (item.appFrom === 'child-app-1') {
     console.log(102, window)
     router.push('child-app-1')
     // 向子应用传递路由 让子路由进行跳转
     microApp.setData('child-app-1', { path: item.path })
+  } else if (item.appFrom === 'bdcp') {
+    router.push('/bdcp')
   }
 }
 </script>

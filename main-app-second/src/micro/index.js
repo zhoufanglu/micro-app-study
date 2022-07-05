@@ -17,6 +17,20 @@ microApp.start({
             return code
           }
         }
+      ],
+      bdcp: [
+        {
+          loader(code) {
+            if (process.env.NODE_ENV === 'development') {
+              // 这里 basename 需要和子应用vite.config.js中base的配置保持一致
+              // eslint-disable-next-line no-param-reassign
+              code = code.replace(/(from|import)(\s*['"])(\/bdcp\/)/g, all => {
+                return all.replace('/bdcp/', 'http://localhost:5001/bdcp/')
+              })
+            }
+            return code
+          }
+        }
       ]
     }
   }

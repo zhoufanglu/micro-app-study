@@ -45,5 +45,5 @@ npm run dev
 ```结构
 └─ main-app
     └─child-app-1
-    └─child-app-2
+    └─bdcp
 ```
